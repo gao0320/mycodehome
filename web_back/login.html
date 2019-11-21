@@ -50,26 +50,9 @@
     </div><!-- /.modal -->
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        var user={
-            login: function(){
-                            // $.post(地址，参数，回调)
-               $.post('http://localhost:8000/admin/login',
-                 {user_name:myName,password:myPassword},
-                 function(res){
-                    console.log(res);
-                 if(res.code===200){
-                    
-                    location.href='./index.html'
-                 }else{
-                    $('#myModal').modal('show')
-                    $('#msgInfo').text(res.msg)
-                 }
-                
-            })
-            }
-        }
-    </script>
+    <script src="./utils/user.js"></script>
+ 
+   
     <script>
         $('#btnLogin').click(function(){
             var myName=$('#myName').val().trim()

@@ -103,24 +103,11 @@
         }
 
     </script>
+    <script src="./utils/user.js"></script>
     <script>
-        var user = {
-            logout:function(){
-                $.post('http://localhost:8000/admin/logout',function(res){
-                console.log(res);
-                if(res.code===200){
-                    window.location.href='./login.html'
-                }
-                
-            })
-            }
-        }
-    </script>
-    <script>
-
         $('#btnLogout').click(function(){
-            user.logout()
-        })
+        user.logout()
+    })
     </script>
 
 </body>
