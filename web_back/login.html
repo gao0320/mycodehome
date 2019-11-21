@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
    
 </head>
 
@@ -28,27 +29,48 @@
                 <input id="myPassword" type="password" class="input_pass" placeholder="密码">
                 <input id="btnLogin" type="button" class="input_sub" value="登 录">
             </form>
-        </div>
-
+        </div> 
     </div> 
+    <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="msgInfo"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  <!-- <button type="button" class="btn btn-primary">确定</button> -->
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script>
         $('#btnLogin').click(function(){
             var myName=$('#myName').val().trim()
             var myPassword=$('#myPassword').val().trim()
             console.log(myName,myPassword);
             if(myName===''||myPassword===''){
-                alert('不能为空')
+                // alert('不能为空')
+                $('#msgInfo').text('不能为空')
+                $('#myModal').modal('show')
                 return
             }
-            // $.post(地址，参数，回掉)
+            // $.post(地址，参数，回调)
             $.post('http://localhost:8000/admin/login',
             {user_name:myName,password:myPassword},function(res){
                 console.log(res);
                 if(res===200){
-                    alert('登录成功')
+                    
+                    location.href='./index.html'
                 }else{
-                    alert(res.msg)
+                    $('#myModal').modal('show')
+                    $('#msgInfo').text(res.msg)
                 }
                 
             })
