@@ -1,6 +1,7 @@
+var baseUrl='http://localhost:8000/'
 var user = {
-    logout:function(){
-        $.post('http://localhost:8000/admin/logout',function(res){
+    logout:function(myName,myPassword){
+        $.post(baseUrl+'admin/logout',function(res){
         console.log(res);
         if(res.code===200){
             window.location.href='./login.html'
@@ -8,9 +9,9 @@ var user = {
     })
 }
 ,
-    login: function(){
+    login: function(myName,myPassword){
                     // $.post(地址，参数，回调)
-       $.post('http://localhost:8000/admin/login',
+       $.post(baseUrl+'admin/login',
          {user_name:myName,password:myPassword},
          function(res){
             console.log(res);

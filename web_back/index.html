@@ -104,9 +104,12 @@
 
     </script>
     <script src="./utils/user.js"></script>
+
     <script>
+        var myName=$('#myName').val().trim()
+        var myPassword=$('#myPassword').val().trim()
         $('#btnLogout').click(function(){
-        user.logout()
+        user.logout(myName,myPassword)
     })
     </script>
 
